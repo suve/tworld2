@@ -20,3 +20,13 @@ void TW_SetColorKey(SDL_Surface *surface, uint32_t color) {
 void TW_ResetColorKey(SDL_Surface *surface) {
 	SDL_SetSurfaceColorKey(surface, false, 0);
 }
+
+int TW_BytesPerPixel(TW_Surface *surface) {
+	return SDL_BYTESPERPIXEL(surface->format);
+}
+
+uint32_t TW_PixelAt(TW_Surface *surface, int x, int y) {
+	uint8_t r, g, b, a;
+	SDL_ReadSurfacePixel(surface, x, y, &r, &g, &b, &a);
+	return SDL_MapSurfaceRGBA(surface, r, g, b, a);
+}

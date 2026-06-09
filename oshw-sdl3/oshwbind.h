@@ -84,6 +84,8 @@ typedef SDL_Surface TW_Surface;
 extern TW_Surface* TW_NewSurface(int w, int h, int transparency);
 extern void TW_SetColorKey(TW_Surface *surface, uint32_t color);
 extern void TW_ResetColorKey(TW_Surface *surface);
+extern int TW_BytesPerPixel(TW_Surface *surface);
+extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 
 #define TW_FreeSurface SDL_DestroySurface
 #define TW_MUSTLOCK SDL_MUSTLOCK
@@ -94,10 +96,8 @@ extern void TW_ResetColorKey(TW_Surface *surface);
 #define TW_EnableAlpha ((void(*)(TW_Surface*))0)
 #define TW_DisplayFormat ((TW_Surface*(*)(TW_Surface*))0)
 #define TW_DisplayFormatAlpha ((TW_Surface*(*)(TW_Surface*))0)
-#define TW_BytesPerPixel ((int(*)(TW_Surface*))0)
-#define TW_PixelAt ((uint32_t(*)(TW_Surface*,int,int))0)
-#define TW_MapRGB ((uint32_t(*)(TW_Surface*,int,int,int))0)
-#define TW_MapRGBA ((uint32_t(*)(TW_Surface*,int,int,int,int))0)
+#define TW_MapRGB SDL_MapSurfaceRGB
+#define TW_MapRGBA SDL_MapSurfaceRGBA
 #define TW_LoadBMP ((TW_Surface*(*)(const char*,int))0)
 #define TW_GetKeyState ((uint8_t*(*)(int*))0)
 

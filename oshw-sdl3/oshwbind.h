@@ -76,21 +76,21 @@ enum {
  * Types
  */
 typedef SDL_Rect TW_Rect;
-
-typedef struct{int w,h,pitch; uint8_t *pixels;} TW_Surface;
+typedef SDL_Surface TW_Surface;
  
 /*
  * Functions
  */
-#define TW_NewSurface ((TW_Surface*(*)(int,int,int))0)
-#define TW_FreeSurface ((void(*)(TW_Surface*))0)
-#define TW_MUSTLOCK ((int(*)(TW_Surface*))0)
-#define TW_LockSurface ((void(*)(TW_Surface*))0)
-#define TW_UnlockSurface ((void(*)(TW_Surface*))0)
-#define TW_FillRect ((void(*)(TW_Surface*,TW_Rect*,uint32_t))0)
-#define TW_BlitSurface ((int(*)(TW_Surface*,TW_Rect*,TW_Surface*,TW_Rect*))0)
-#define TW_SetColorKey ((void(*)(TW_Surface*,uint32_t))0)
-#define TW_ResetColorKey ((void(*)(TW_Surface*))0)
+extern TW_Surface* TW_NewSurface(int w, int h, int transparency);
+extern void TW_SetColorKey(TW_Surface *surface, uint32_t color);
+extern void TW_ResetColorKey(TW_Surface *surface);
+
+#define TW_FreeSurface SDL_DestroySurface
+#define TW_MUSTLOCK SDL_MUSTLOCK
+#define TW_LockSurface SDL_LockSurface
+#define TW_UnlockSurface SDL_UnlockSurface
+#define TW_FillRect SDL_FillSurfaceRect
+#define TW_BlitSurface SDL_BlitSurface
 #define TW_EnableAlpha ((void(*)(TW_Surface*))0)
 #define TW_DisplayFormat ((TW_Surface*(*)(TW_Surface*))0)
 #define TW_DisplayFormatAlpha ((TW_Surface*(*)(TW_Surface*))0)

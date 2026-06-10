@@ -84,6 +84,7 @@ typedef SDL_Surface TW_Surface;
 extern TW_Surface* TW_NewSurface(int w, int h, int transparency);
 extern void TW_SetColorKey(TW_Surface *surface, uint32_t color);
 extern void TW_ResetColorKey(TW_Surface *surface);
+extern void TW_EnableAlpha(TW_Surface *surface);
 extern int TW_BytesPerPixel(TW_Surface *surface);
 extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 
@@ -93,7 +94,6 @@ extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 #define TW_UnlockSurface SDL_UnlockSurface
 #define TW_FillRect SDL_FillSurfaceRect
 #define TW_BlitSurface SDL_BlitSurface
-#define TW_EnableAlpha ((void(*)(TW_Surface*))0)
 #define TW_DisplayFormat ((TW_Surface*(*)(TW_Surface*))0)
 #define TW_DisplayFormatAlpha ((TW_Surface*(*)(TW_Surface*))0)
 #define TW_MapRGB SDL_MapSurfaceRGB

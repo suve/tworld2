@@ -21,6 +21,10 @@ void TW_ResetColorKey(SDL_Surface *surface) {
 	SDL_SetSurfaceColorKey(surface, false, 0);
 }
 
+void TW_EnableAlpha(SDL_Surface *surface) {
+	SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_BLEND);
+}
+
 int TW_BytesPerPixel(TW_Surface *surface) {
 	return SDL_BYTESPERPIXEL(surface->format);
 }

@@ -86,6 +86,8 @@ extern void TW_SetColorKey(TW_Surface *surface, uint32_t color);
 extern void TW_ResetColorKey(TW_Surface *surface);
 extern void TW_EnableAlpha(TW_Surface *surface);
 extern int TW_BytesPerPixel(TW_Surface *surface);
+extern TW_Surface* TW_DisplayFormat(TW_Surface *surface);
+extern TW_Surface* TW_DisplayFormatAlpha(TW_Surface *surface);
 extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 
 #define TW_FreeSurface SDL_DestroySurface
@@ -94,8 +96,6 @@ extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 #define TW_UnlockSurface SDL_UnlockSurface
 #define TW_FillRect SDL_FillSurfaceRect
 #define TW_BlitSurface SDL_BlitSurface
-#define TW_DisplayFormat ((TW_Surface*(*)(TW_Surface*))0)
-#define TW_DisplayFormatAlpha ((TW_Surface*(*)(TW_Surface*))0)
 #define TW_MapRGB SDL_MapSurfaceRGB
 #define TW_MapRGBA SDL_MapSurfaceRGBA
 #define TW_LoadBMP ((TW_Surface*(*)(const char*,int))0)
@@ -104,5 +104,10 @@ extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 #define TW_GetTicks SDL_GetTicks
 #define TW_Delay SDL_Delay
 #define TW_GetError SDL_GetError
+
+/*
+ * Global vars
+ */
+extern SDL_Window *sdl3wnd;
 
 #endif

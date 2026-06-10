@@ -8,9 +8,8 @@
 #include "oshwbind.h"
 
 TW_Surface* TW_NewSurface(int w, int h, int transparent) {
-	/* TODO: Use the same pixel format as the window */
-    /* TODO: Set transparency */
-	return SDL_CreateSurface(w, h, SDL_PIXELFORMAT_RGB24);
+	/* TODO: Use alpha-enabled pixel format if `transparent` is 1 */
+	return SDL_CreateSurface(w, h, SDL_GetWindowPixelFormat(sdl3wnd));
 }
 
 void TW_SetColorKey(SDL_Surface *surface, uint32_t color) {
@@ -27,6 +26,15 @@ void TW_EnableAlpha(SDL_Surface *surface) {
 
 int TW_BytesPerPixel(TW_Surface *surface) {
 	return SDL_BYTESPERPIXEL(surface->format);
+}
+
+TW_Surface* TW_DisplayFormat(SDL_Surface *surface) {
+	return SDL_ConvertSurface(surface, SDL_GetWindowPixelFormat(sdl3wnd));
+}
+
+TW_Surface* TW_DisplayFormatAlpha(SDL_Surface *surface) {
+	/* TODO: Needs ensuring that pixel format includes alpha */
+	return TW_DisplayFormat(surface);
 }
 
 uint32_t TW_PixelAt(TW_Surface *surface, int x, int y) {

@@ -8,10 +8,14 @@
 
 #include <stdarg.h>
 
+#include <SDL3/SDL.h>
+
 #include "../generic/generic.h"
 #include "../oshw.h"
 
 genericglobals  geng;
+
+SDL_Window *sdl3wnd;
 
 int oshwinitialize(
 	int silence,

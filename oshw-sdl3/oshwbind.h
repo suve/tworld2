@@ -89,6 +89,7 @@ extern int TW_BytesPerPixel(TW_Surface *surface);
 extern TW_Surface* TW_DisplayFormat(TW_Surface *surface);
 extern TW_Surface* TW_DisplayFormatAlpha(TW_Surface *surface);
 extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
+extern TW_Surface* TW_LoadBMP(const char *filename, int setscreenpallette);
 
 #define TW_FreeSurface SDL_DestroySurface
 #define TW_MUSTLOCK SDL_MUSTLOCK
@@ -98,7 +99,6 @@ extern uint32_t TW_PixelAt(TW_Surface *surface, int x, int y);
 #define TW_BlitSurface SDL_BlitSurface
 #define TW_MapRGB SDL_MapSurfaceRGB
 #define TW_MapRGBA SDL_MapSurfaceRGBA
-#define TW_LoadBMP ((TW_Surface*(*)(const char*,int))0)
 #define TW_GetKeyState ((uint8_t*(*)(int*))0)
 
 #define TW_GetTicks SDL_GetTicks

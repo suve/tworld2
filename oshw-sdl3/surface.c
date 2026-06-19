@@ -42,3 +42,17 @@ uint32_t TW_PixelAt(TW_Surface *surface, int x, int y) {
 	SDL_ReadSurfacePixel(surface, x, y, &r, &g, &b, &a);
 	return SDL_MapSurfaceRGBA(surface, r, g, b, a);
 }
+
+TW_Surface *TW_LoadBMP(char const *filename, int setscreenpalette) {
+	const SDL_Surface *newSurf = SDL_LoadBMP(filename);
+	if((newSurf != NULL) && (setscreenpalette)) {
+		const SDL_Palette *palette = SDL_GetSurfacePalette(newSurf);
+		if(palette != NULL) {
+			const SDL_Surface *windowSurf = SDL_GetWindowSurface(sdl3wnd);
+			if(windowSurf != NULL) {
+				SDL_SetSurfacePalette(windowSurf, palette);
+			}
+		}
+	}
+	return newSurf;
+}

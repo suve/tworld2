@@ -7,6 +7,7 @@
  */
 
 #include <stdarg.h>
+#include <stdio.h>
 
 #include <SDL3/SDL.h>
 
@@ -75,7 +76,16 @@ int setvolume(int volume, int display) {}
 int changevolume(int delta, int display) {}
 void freesfx(int index) {}
 void ding(void) {}
-void setsubtitle(char const *subtitle) {}
+
+void setsubtitle(char const *subtitle) {
+	if((subtitle != NULL) && (*subtitle != '\0')) {
+		char buffer[512];
+		snprintf(buffer, sizeof(buffer), "Tile World - %s", subtitle);
+		SDL_SetWindowTitle(sdl3wnd, buffer);
+	} else {
+		SDL_SetWindowTitle(sdl3wnd, "Tile World");
+	}
+}
 
 void usermessage(
 	int action,

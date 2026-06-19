@@ -101,7 +101,10 @@ int displaytable(
 
 void readextensions(struct gameseries *series) {}
 int getreplaysecondstoskip(void) {}
-void copytoclipboard(char const *text) {}
+
+void copytoclipboard(char const *text) {
+	SDL_SetClipboardText(text);
+}
 
 int main(int argc, char *argv[])
 {
